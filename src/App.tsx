@@ -17,6 +17,13 @@ function App() {
     let isUpdated = true
     if (isUpdated) {
       ;(async () => {
+        dispatch({
+          type: 'SET_LOADING',
+          payload: {
+            loading: true,
+          },
+        })
+
         const tvshow = await getShowInfo(1)
         const episodes = await getEpisodeList(1)
 
@@ -25,6 +32,7 @@ function App() {
           payload: {
             tvshow,
             episodes,
+            loading: false,
           },
         })
       })()

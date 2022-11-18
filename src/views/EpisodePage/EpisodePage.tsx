@@ -54,11 +54,13 @@ const EpisodePage = () => {
 
   if (!selectedEpisode) {
     return (
-      <Box display='flex' alignItems='center' justifyContent='center' minHeight={'100vh'}>
-        <CustomButton btnColor={'dark'} onClick={handleClickGoToHome}>
-          Go to Home
-        </CustomButton>
-      </Box>
+      <MainLayout pageTitle={''}>
+        <Box display='flex' alignItems='center' justifyContent='center' minHeight={'100vh'}>
+          <CustomButton btnColor={'dark'} onClick={handleClickGoToHome}>
+            Go to Home
+          </CustomButton>
+        </Box>
+      </MainLayout>
     )
   }
 

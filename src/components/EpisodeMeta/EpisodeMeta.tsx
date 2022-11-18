@@ -13,10 +13,12 @@ interface Props {
   imageSrc: string
   imageAlt: string
   content: string
+  handleClickPrev: () => void
+  handleClickNext: () => void
 }
 
 const EpisodeMeta: FC<Props> = (props) => {
-  const { imageSrc, imageAlt, content } = props
+  const { imageSrc, imageAlt, content, handleClickPrev, handleClickNext } = props
 
   const classes = useStyles()
 
@@ -25,10 +27,14 @@ const EpisodeMeta: FC<Props> = (props) => {
       <Box className={classes.imageWrapper}>
         <CustomImage src={imageSrc} alt={imageAlt} />
       </Box>
-      <Box>
+      <Box className={classes.contentWrapper}>
         <Grid className={classes.btnGroupWrapper}>
-          <CustomButton btnColor={'green'}>Prevous Ep.</CustomButton>
-          <CustomButton btnColor={'green'}>Next Ep.</CustomButton>
+          <CustomButton btnColor={'green'} onClick={handleClickPrev}>
+            Prevous Ep.
+          </CustomButton>
+          <CustomButton btnColor={'green'} onClick={handleClickNext}>
+            Next Ep.
+          </CustomButton>
         </Grid>
         <Typography component={'div'} className={classes.content}>
           {content}

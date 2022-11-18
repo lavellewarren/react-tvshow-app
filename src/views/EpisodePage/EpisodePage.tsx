@@ -1,20 +1,77 @@
-import { Grid } from '@mui/material'
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { useNavigate, useParams } from 'react-router-dom'
+
+import { Grid, Box } from '@mui/material'
 
 import MainLayout from 'layouts'
 import InfoPanel from 'components/InfoPanel'
 import EpisodeMeta from 'components/EpisodeMeta'
+import { Episode } from 'typings'
+import CustomButton from 'components/CustomButton'
 
 const EpisodePage = () => {
+  const navigate = useNavigate()
+  const { idx } = useParams()
+
+  const { main } = useSelector((state: any) => ({ ...state }))
+  const {
+    episodes,
+  }: {
+    episodes: Episode[]
+  } = main
+
+  const [episodeIdx, setEpisodeIdx] = useState<number>(-1)
+  const [selectedEpisode, setSelectedEpisode] = useState<Episode>()
+
+  const handleClickGoToHome = () => {
+    navigate('/')
+  }
+
+  const handleClickPrev = () => {
+    if (episodeIdx > 1) {
+      navigate(`/episode/${episodeIdx - 1}`)
+    }
+  }
+
+  const handleClickNext = () => {
+    if (episodeIdx < episodes.length) {
+      navigate(`/episode/${episodeIdx + 1}`)
+    }
+  }
+
+  useEffect(() => {
+    if (!isNaN(Number(idx))) {
+      setEpisodeIdx(Number(idx))
+    }
+  }, [idx])
+
+  useEffect(() => {
+    if (episodeIdx > 0 && episodeIdx <= episodes.length) {
+      setSelectedEpisode(episodes[episodeIdx - 1])
+    }
+  }, [episodeIdx, episodes])
+
+  if (!selectedEpisode) {
+    return (
+      <Box display='flex' alignItems='center' justifyContent='center' minHeight={'100vh'}>
+        <CustomButton btnColor={'dark'} onClick={handleClickGoToHome}>
+          Go to Home
+        </CustomButton>
+      </Box>
+    )
+  }
+
   return (
-    <MainLayout pageTitle='For Better or Worse'>
+    <MainLayout pageTitle={selectedEpisode?.name ?? ''}>
       <Grid container>
         <Grid item sm={12} md={8}>
           <EpisodeMeta
-            imageSrc='https://static.tvmaze.com/uploads/images/large_landscape/428/1070166.jpg'
-            imageAlt={'For Better or Worse'}
-            content={
-              "On the day of Kit and Bell's wedding, Bell and Conrad get pulled away to tend to the ill daughter of a major hospital donor. Meanwhile, Billie takes Gigi and Sammie dress shopping."
-            }
+            imageSrc={selectedEpisode?.image ?? ''}
+            imageAlt={selectedEpisode?.name ?? ''}
+            content={selectedEpisode?.summary ?? ''}
+            handleClickPrev={handleClickPrev}
+            handleClickNext={handleClickNext}
           />
         </Grid>
         <Grid item sm={12} md={4}>
@@ -23,32 +80,32 @@ const EpisodePage = () => {
             data={[
               {
                 title: 'Number',
-                content: 'Season 6, Episode 6',
+                content: selectedEpisode?.number ?? '',
                 type: 'green',
               },
               {
                 title: 'Airdate',
-                content: 'Tuesday Oct 25, 2022 at 20:00',
+                content: selectedEpisode?.airdate ?? '',
                 type: 'default',
               },
               {
                 title: 'Runtime',
-                content: '62 minutes',
+                content: selectedEpisode?.runtime ?? '',
                 type: 'default',
               },
               {
-                title: 'Writer',
-                content: 'Marc Halsey',
-                type: 'green',
-              },
-              {
-                title: 'Director',
-                content: 'Manish Dayal',
+                title: 'Rating',
+                content: String(selectedEpisode?.rating) ?? '',
                 type: 'green',
               },
             ]}
           />
         </Grid>
+      </Grid>
+      <Grid display={'flex'} justifyContent={'center'} mt={5}>
+        <CustomButton btnColor={'green'} onClick={handleClickGoToHome}>
+          Go to Home
+        </CustomButton>
       </Grid>
     </MainLayout>
   )

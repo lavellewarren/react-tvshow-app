@@ -30,7 +30,7 @@ const showInfoPanelStyles = (theme: Theme) => ({
   green: {
     '&.MuiTypography-root': {
       fontSize: '1.2rem',
-      color: theme.palette.secondary.green,
+      color: theme.palette.secondary.main,
     },
   },
 })

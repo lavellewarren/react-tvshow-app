@@ -26,6 +26,10 @@ const StyledTableRow = styled(TableRow)(() => ({
   '&:nth-of-type(odd)': {
     backgroundColor: '#f1f1f1',
   },
+  '&:hover': {
+    backgroundColor: '#f7f7f7',
+    cursor: 'pointer',
+  },
   // hide last border
   '&:last-child td, &:last-child th': {
     border: 0,
@@ -35,10 +39,11 @@ const StyledTableRow = styled(TableRow)(() => ({
 interface Props {
   headers: string[]
   rows: string[][]
+  handleClickRow: (episodeIdx: number) => () => void
 }
 
 const CustomTable: FC<Props> = (props) => {
-  const { headers, rows } = props
+  const { headers, rows, handleClickRow } = props
 
   return (
     <TableContainer component={Paper}>
@@ -54,10 +59,10 @@ const CustomTable: FC<Props> = (props) => {
         </TableHead>
         <TableBody>
           {rows.map((row, rowIdx) => (
-            <StyledTableRow key={rowIdx}>
-              {headers.map((header, idx) => (
+            <StyledTableRow key={rowIdx} onClick={handleClickRow(rowIdx)}>
+              {headers.map((_header, idx) => (
                 <StyledTableCell key={idx} align={idx === 0 ? 'left' : 'right'}>
-                  {headers[rowIdx]}
+                  {row[idx]}
                 </StyledTableCell>
               ))}
             </StyledTableRow>

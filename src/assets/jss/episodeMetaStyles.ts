@@ -19,24 +19,29 @@ const showMetaStyles = (theme: Theme) => ({
       width: '100%',
     },
   },
+  contentWrapper: {
+    flexGrow: 1,
+    [theme.breakpoints.down('lg')]: {
+      flexGrow: 'unset',
+      width: '67%',
+    },
+    [theme.breakpoints.down('sm')]: {
+      flexGrow: 'unset',
+      width: '100%',
+    },
+  },
   btnGroupWrapper: {
     display: 'flex',
-    justifyContent: 'right',
     gap: '1rem',
+    justifyContent: 'right',
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: 'center',
+    },
   },
   content: {
     '&.MuiTypography-root': {
       padding: '0.5rem',
       fontSize: '1.2rem',
-      flexGrow: 1,
-      [theme.breakpoints.down('lg')]: {
-        flexGrow: 'unset',
-        width: '67%',
-      },
-      [theme.breakpoints.down('sm')]: {
-        flexGrow: 'unset',
-        width: '100%',
-      },
     },
   },
 })

@@ -26,10 +26,10 @@ const buttonStyles = (theme: Theme) => ({
   },
   green: {
     '&.MuiButton-root': {
-      color: theme.palette.secondary.green,
-      borderColor: theme.palette.secondary.green,
+      color: theme.palette.secondary.main,
+      borderColor: theme.palette.secondary.main,
       '&:hover': {
-        backgroundColor: theme.palette.secondary.green,
+        backgroundColor: theme.palette.secondary.main,
       },
     },
   },

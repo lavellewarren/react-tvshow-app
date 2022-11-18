@@ -1,11 +1,11 @@
 <p align="center">
   
-  <h3 align="center">React-TVShow-App</h3>
+  <h1 align="center">React-TVShow-App</h1>
 
   <br>
 
   <a href="https://github.com/newcometlab/react-tvshow-app">
-    <img src="" alt="">
+    <img src="https://user-images.githubusercontent.com/35681177/202607501-eb13d3f7-8013-469e-8ac5-64630a929286.png" alt="React-TVShow-App">
   </a>
 </p>
 
@@ -26,7 +26,7 @@
       </ul>
     </li>
     <li><a href="#license">License</a></li>
-    <li><a href="#links-contacts">Links & Contacts</a></li>
+    <li><a href="#links-and-contacts">Links & Contacts</a></li>
     <li><a href="#acknowledgements">Acknowledgements</a></li>
   </ol>
 </details>
@@ -42,6 +42,11 @@ This is what I've completed.
 - [React](https://reactjs.org/)
 - [Material UI](https://mui.com/)
 - [TV Maze](http://www.tvmaze.com/api)
+
+### Data Source
+
+- [Show Info](https://api.tvmaze.com/shows/1)
+- [Episode List](https://api.tvmaze.com/shows/1/episodes)
 
 ## Getting Started
 
@@ -79,7 +84,7 @@ npm install npm@latest -g
 
 Distributed under the MIT License. See `LICENSE` for more information.
 
-## Links & Contacts
+## Links and Contacts
 
 [@Petar Milenovic](https://www.linkedin.com/in/petar-milenovic-5b00bb24a/) - peramileup@gmail.com
 

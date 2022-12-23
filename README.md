@@ -86,8 +86,6 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Links and Contacts
 
-[@Petar Milenovic](https://www.linkedin.com/in/petar-milenovic-5b00bb24a/) - peramileup@gmail.com
-
 Project Repository: [react-tvshow-app](https://github.com/newcometlab/react-tvshow-app)
 
 ## Acknowledgements
